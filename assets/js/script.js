@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // declare variables
 var citySearchEl = document.querySelector('#city');
 var weatherEl = document.querySelector('#weather-container');
@@ -14,6 +15,9 @@ var formEventHandler = function(event) {
 submitBtn.addEventListener("click", formEventHandler);
 
 var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid=cc2a72f395e0816b5bafe5bd96ddb5fd';
+=======
+var apiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={optional}&appid=cc2a72f395e0816b5bafe5bd96ddb5fd';
+>>>>>>> 485042cc4df88efaf695b8440a4830e857d8f440
 
 fetch(apiUrl)
 .then(function(response) {
