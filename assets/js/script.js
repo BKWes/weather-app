@@ -1,11 +1,13 @@
 // declare variables
 const appId = 'cc2a72f395e0816b5bafe5bd96ddb5fd'
 var citySearchEl = document.querySelector('#city');
+var currentCityNameEl = document.querySelector('#current-city');
 var weatherEl = document.querySelector('#weather-container');
 var forecastEl = document.querySelector('#five-day-forecast');
 var submitBtn = document.querySelector('button');
 var cityName = null
-var city = [];
+var city = null;
+var date = moment().format("MMM Do YY");
 
 var formEventHandler = function(event) {
     event.preventDefault(); // prevent browser from refreshing on submit
@@ -19,7 +21,19 @@ function nameSearch() {
     cityWeather(cityName);
 }
 
+
 var cityWeather = function(cityName) {
+    fetchApi();
+    currentCityNameEl.textContent = citySearchEl.value;
+
+    
+
+};
+
+submitBtn.addEventListener("click", formEventHandler);
+
+
+function fetchApi() {
     var apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q='+cityName+'&units=imperial&appid=' + appId;
     fetch(apiUrl)
     .then(function(response) {
@@ -27,11 +41,7 @@ var cityWeather = function(cityName) {
         return response.json();
     })
     .then(function(data) {
-        console.log(data, cityName);
+        console.log(data);
+        return data;
     })
 };
-
-submitBtn.addEventListener("click", formEventHandler);
-
-
-
