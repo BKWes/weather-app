@@ -1,8 +1,7 @@
 // declare variables
 const appId = 'cc2a72f395e0816b5bafe5bd96ddb5fd'
 var citySearchEl = document.querySelector('#city');
-var currentCityNameEl = document.querySelector('#current-city');
-var weatherEl = document.querySelector('#weather-container');
+var currentCityNameEl = document.querySelector('#currentCity');
 var forecastEl = document.querySelector('#five-day-forecast');
 var submitBtn = document.querySelector('button');
 var fiveDay = document.querySelector('#five-day');
