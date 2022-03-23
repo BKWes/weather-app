@@ -40,6 +40,7 @@ function fetchApi(cityName) {
     .then(function(data) {
         console.log(data);
         currentCityNameEl.textContent = '';
+        currentWeatherEl.innerHTML = '';
         // change current city name
         currentCityNameEl.textContent = data.name + ' ' + date;
         // create icon and append to html
@@ -73,7 +74,41 @@ function fetchApi(cityName) {
             })
             .then(function(dataTwo) {
                 console.log(dataTwo);
+// use a for loop to consolidate days???
+                // day 1
+                let dateOne = moment().add(1, 'days').format("L");
+                let dayOneDate = document.createElement('h4');
+                dayOneDate.setAttribute("class", "card-header text-light")
+                dayOneDate.textContent = dateOne;
+                dayOneEl.appendChild(dayOneDate);
 
+                let dayOneIcon = document.createElement('img');
+                dayOneIcon.setAttribute("class", "card-body");
+                dayOneIcon.setAttribute("id", "forecast-icon");
+                dayOneIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + dataTwo.daily[0].weather[0].icon + "@2x.png");
+                dayOneEl.appendChild(dayOneIcon);
+
+                let dayOneTemp = document.createElement('span');
+                dayOneTemp.setAttribute("class", "card-body text-light");
+                dayOneTemp.textContent = 'Temp: '+ dataTwo.daily[0].temp.day;
+                dayOneEl.appendChild(dayOneTemp);
+
+                let dayOneWind = document.createElement('span');
+                dayOneWind.setAttribute("class", "card-body text-light");
+                dayOneWind.textContent = 'Wind: '+ dataTwo.daily[0].wind_speed;
+                dayOneEl.appendChild(dayOneWind);
+                
+                let dayOneHumid = document.createElement('span');
+                dayOneHumid.setAttribute("class", "card-body text-light");
+                dayOneHumid.textContent = 'Humidity: '+ dataTwo.daily[0].humidity;
+                dayOneEl.appendChild(dayOneHumid);
+                // day 2
+
+                // day 3
+
+                // day 4
+
+                // day 5
             })
         // append forecast info to day#El vars
 
