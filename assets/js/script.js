@@ -10,17 +10,37 @@ let dayTwoEl = document.querySelector('#day2');
 let dayThreeEl = document.querySelector('#day3');
 let dayFourEl = document.querySelector('#day4');
 let dayFiveEl = document.querySelector('#day5');
+let searchHistoryEl = document.querySelector('#past-search');
+let searchHistory = [];
 let iconEl = null;
 var cityName = null;
 var city = null;
 var date = moment().format("LL");
 
+$(document).ready(function() {
+    let searchHistory = localStorage.getItem("city");
+    console.log(searchHistory);
+    
+})
+
 function formEventHandler(event) {
     event.preventDefault(); // prevent browser from refreshing on submit
     let city = citySearchEl.value.trim();
+    historyBtn();
     if (city) {
+        searchHistory.push(city);
+        $('.btn-secondary').html(city);
         nameSearch();
     }
+    localStorage.setItem("city", JSON.stringify(city));
+    
+};
+
+function historyBtn() {
+    var searchedBtn = document.createElement('button');
+    searchedBtn.setAttribute('class','btn btn-secondary col-12 p-2');
+    $('#past-search').append(searchedBtn);
+
 };
 
 function nameSearch() {
